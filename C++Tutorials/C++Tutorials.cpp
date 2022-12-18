@@ -1,20 +1,38 @@
 #include <iostream>
 #include "LinkedList.h"
-#include "FixedStackList.h"
-#include "DynamicStackList.h"
+#include "FixedStack.h"
+#include "DynamicStack.h"
+#include "FixedSimpleQueue.h"
+
 using namespace std;
 
 
 
 int main()
 {
+#pragma region FixedSimpleQueue
 
-#pragma region DynamicStackList
+	//Simple Queue Implemented by Array so its Fixed Size
+
+	
+	FixedSimpleQueue<int,5> fixedSimpleQueue;
+	/*
+	fixedSimpleQueue.EnQueue(100);
+	fixedSimpleQueue.EnQueue(200);
+	fixedSimpleQueue.EnQueue(300);
+	fixedSimpleQueue.EnQueue(400);
+	*/
+	//cout << "Top Value = " << fixedStackList.Peak() <<"\n";
+	
+
+#pragma endregion
+
+#pragma region DynamicStack
 
 	//Stack List Implemented by LinkedList so its Dynamic Size
 
-	
-	DynamicStackList<int> stackList;
+	/*
+	DynamicStack<int> stackList;
 
 	stackList.Push(100);
 	stackList.Push(200);
@@ -28,16 +46,16 @@ int main()
 	
 
 	stackList.PrintAll();
-
+	*/
 
 #pragma endregion
 
-#pragma region FixedStackList
+#pragma region FixedStack
 
 	//Stack List Implemented by Array so its Fixed Size
 
 	/*
-	FixedStackList<int,5> fixedStackList;
+	FixedStack<int,5> fixedStackList;
 
 	fixedStackList.Push(100);
 	fixedStackList.Push(200);

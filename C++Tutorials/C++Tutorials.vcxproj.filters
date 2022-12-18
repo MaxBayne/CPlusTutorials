@@ -23,10 +23,13 @@
     <ClInclude Include="LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FixedStackList.h">
+    <ClInclude Include="FixedStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicStackList.h">
+    <ClInclude Include="DynamicStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedSimpleQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

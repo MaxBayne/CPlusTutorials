@@ -1,5 +1,5 @@
-#ifndef FIXEDSTACKLIST_H_
-#define FIXEDSTACKLIST_H_
+#ifndef FIXEDSTACK_H_
+#define FIXEDSTACK_H_
 /*
 * ################### Information #################
 * Define Stack List Powered By Arrays
@@ -15,7 +15,7 @@
 
 
 template <typename T,int MAXCOUNT>
-class FixedStackList
+class FixedStack
 {
 private:
 
@@ -33,10 +33,10 @@ private:
 public:
 
 	//Constructor
-	FixedStackList();
+	FixedStack();
 
 	//Destrcutor
-	~FixedStackList();
+	~FixedStack();
 
 
 
@@ -77,7 +77,7 @@ public:
 
 //Constructor
 template <typename T, int MAXCOUNT>
-FixedStackList<T,MAXCOUNT>::FixedStackList()
+FixedStack<T,MAXCOUNT>::FixedStack()
 {
 	_Count = -1;
 	_Top = nullptr;
@@ -86,7 +86,7 @@ FixedStackList<T,MAXCOUNT>::FixedStackList()
 
 //Desctructor
 template <typename T, int MAXCOUNT>
-FixedStackList<T,MAXCOUNT>::~FixedStackList()
+FixedStack<T,MAXCOUNT>::~FixedStack()
 {
 	//Empty Arrays From Memory
 	/*if (_Array != NULL) 
@@ -99,30 +99,30 @@ FixedStackList<T,MAXCOUNT>::~FixedStackList()
 
 
 
-//Get the Count of Items inside FixedStackList
+//Get the Count of Items inside FixedStack
 template <typename T, int MAXCOUNT>
-int FixedStackList<T, MAXCOUNT>::Count()
+int FixedStack<T, MAXCOUNT>::Count()
 {
 	return _Count+1;
 }
 
 //get the Max Count that can store inside StackList
 template <typename T, int MAXCOUNT>
-int FixedStackList<T, MAXCOUNT>::MaxCount()
+int FixedStack<T, MAXCOUNT>::MaxCount()
 {
 	return MAXCOUNT;
 }
 
-//Get the Top Item inside FixedStackList
+//Get the Top Item inside FixedStack
 template <typename T, int MAXCOUNT>
-T FixedStackList<T, MAXCOUNT>::Top()
+T FixedStack<T, MAXCOUNT>::Top()
 {
 	return *_Top;
 }
 
-//Get the Bottom Item inside FixedStackList
+//Get the Bottom Item inside FixedStack
 template <typename T, int MAXCOUNT>
-T FixedStackList<T, MAXCOUNT>::Bottom()
+T FixedStack<T, MAXCOUNT>::Bottom()
 {
 	return *_Bottom;
 }
@@ -131,7 +131,7 @@ T FixedStackList<T, MAXCOUNT>::Bottom()
 
 //Push Item inside StackList
 template <typename T, int MAXCOUNT>
-void FixedStackList<T, MAXCOUNT>::Push(T data)
+void FixedStack<T, MAXCOUNT>::Push(T data)
 {
 	//Update Counter of Items
 	_Count++;
@@ -153,7 +153,7 @@ void FixedStackList<T, MAXCOUNT>::Push(T data)
 
 //Pop Item from StackList
 template <typename T, int MAXCOUNT>
-T FixedStackList<T, MAXCOUNT>::Pop()
+T FixedStack<T, MAXCOUNT>::Pop()
 {
 	//check if stack reach to lower count or not
 	if (_Count == -1)
@@ -184,14 +184,14 @@ T FixedStackList<T, MAXCOUNT>::Pop()
 
 //Peak Top Item from StackList
 template <typename T, int MAXCOUNT>
-T FixedStackList<T, MAXCOUNT>::Peak()
+T FixedStack<T, MAXCOUNT>::Peak()
 {
 	return *_Top;
 }
 
 //Print All Items
 template <typename T, int MAXCOUNT>
-void FixedStackList<T, MAXCOUNT>::PrintAll()
+void FixedStack<T, MAXCOUNT>::PrintAll()
 {
 	
 	if (_Count < 0)
@@ -210,6 +210,6 @@ void FixedStackList<T, MAXCOUNT>::PrintAll()
 }
 
 
-#endif // !FIXEDSTACKLIST_H_
+#endif // !FIXEDSTACK_H_
 
 

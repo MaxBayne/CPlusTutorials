@@ -130,8 +130,9 @@
     <ClCompile Include="C++Tutorials.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DynamicStackList.h" />
-    <ClInclude Include="FixedStackList.h" />
+    <ClInclude Include="DynamicStack.h" />
+    <ClInclude Include="FixedSimpleQueue.h" />
+    <ClInclude Include="FixedStack.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

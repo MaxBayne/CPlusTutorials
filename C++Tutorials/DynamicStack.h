@@ -1,7 +1,7 @@
 #include "LinkedList.h"
 
-#ifndef DYNAMICSTACKLIST_H_
-#define DYNAMICSTACKLIST_H_
+#ifndef DynamicStack_H_
+#define DynamicStack_H_
 /*
 * ################### Information #################
 * Define Stack List Powered By LinkedList
@@ -19,7 +19,7 @@
 
 
 template <typename T>
-class DynamicStackList
+class DynamicStack
 {
 private:
 
@@ -34,10 +34,10 @@ private:
 public:
 
 	//Constructor
-	DynamicStackList();
+	DynamicStack();
 
 	//Destrcutor
-	~DynamicStackList();
+	~DynamicStack();
 
 
 
@@ -76,7 +76,7 @@ public:
 
 //Constructor
 template <typename T>
-DynamicStackList<T>::DynamicStackList()
+DynamicStack<T>::DynamicStack()
 {
 	_Top = nullptr;
 	_Bottom = nullptr;
@@ -84,7 +84,7 @@ DynamicStackList<T>::DynamicStackList()
 
 //Desctructor
 template <typename T>
-DynamicStackList<T>::~DynamicStackList()
+DynamicStack<T>::~DynamicStack()
 {
 	//Empty Arrays From Memory
 	/*if (_Array != NULL)
@@ -97,24 +97,24 @@ DynamicStackList<T>::~DynamicStackList()
 
 
 
-//Get the Count of Items inside DynamicStackList
+//Get the Count of Items inside DynamicStack
 template <typename T>
-int DynamicStackList<T>::Count()
+int DynamicStack<T>::Count()
 {
 	return _LinkedList.Count();
 }
 
 
-//Get the Top Item inside DynamicStackList
+//Get the Top Item inside DynamicStack
 template <typename T>
-T DynamicStackList<T>::Top()
+T DynamicStack<T>::Top()
 {
 	return *_Top->Data;
 }
 
-//Get the Bottom Item inside DynamicStackList
+//Get the Bottom Item inside DynamicStack
 template <typename T>
-T DynamicStackList<T>::Bottom()
+T DynamicStack<T>::Bottom()
 {
 	return *_Bottom->Data;
 }
@@ -123,7 +123,7 @@ T DynamicStackList<T>::Bottom()
 
 //Push Item inside StackList
 template <typename T>
-void DynamicStackList<T>::Push(T data)
+void DynamicStack<T>::Push(T data)
 {
 	//Store the data inside begin of LinkedList
 	_LinkedList.InsertNodeAtBegin(data);
@@ -136,7 +136,7 @@ void DynamicStackList<T>::Push(T data)
 
 //Pop Item from StackList
 template <typename T>
-T DynamicStackList<T>::Pop()
+T DynamicStack<T>::Pop()
 {
 	//check if stack reach to lower count or not
 	if (_LinkedList.Count() == 0)
@@ -166,14 +166,14 @@ T DynamicStackList<T>::Pop()
 
 //Peak Top Item from StackList
 template <typename T>
-T DynamicStackList<T>::Peak()
+T DynamicStack<T>::Peak()
 {
 	return _Top->Data;
 }
 
 //Print All Items
 template <typename T>
-void DynamicStackList<T>::PrintAll()
+void DynamicStack<T>::PrintAll()
 {
 
 	if (_LinkedList.Count() == 0)
@@ -188,6 +188,6 @@ void DynamicStackList<T>::PrintAll()
 }
 
 
-#endif // !DYNAMICSTACKLIST_H_
+#endif // !DynamicStack_H_
 
 
