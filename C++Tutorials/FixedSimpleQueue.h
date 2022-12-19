@@ -107,8 +107,6 @@ FixedSimpleQueue<T, MAXCOUNT>::~FixedSimpleQueue()
 }
 
 
-
-
 //Get the Count of Items inside FixedSimpleQueue
 template <typename T, int MAXCOUNT>
 int FixedSimpleQueue<T, MAXCOUNT>::Count()
@@ -137,8 +135,6 @@ T FixedSimpleQueue<T, MAXCOUNT>::Rear()
 	return *_Rear;
 }
 
-
-
 //Peak Top Item from FixedSimpleQueue
 template <typename T, int MAXCOUNT>
 T FixedSimpleQueue<T, MAXCOUNT>::Peak()
@@ -146,60 +142,80 @@ T FixedSimpleQueue<T, MAXCOUNT>::Peak()
 	return *_Front;
 }
 
-//Push Item inside FixedSimpleQueue
+//Push Item inside the End of FixedSimpleQueue
 template <typename T, int MAXCOUNT>
 void FixedSimpleQueue<T, MAXCOUNT>::EnQueue(T data)
 {
-	//Update Counter of Items
-	_Count++;
-
-	//Update Index 
-	_FrontIndex++;
-
-	//check if Queue reach to max count or not
-	if (_Count+1 == MAXCOUNT)
+	if (_Count == 0) 
 	{
+		
+		//if queue is empty
+
+		//Update Index
+		_FrontIndex = 0;
+		_RearIndex = 0;
+
+		//Update Pointer
+		_Front = &_Array[_FrontIndex];
+		_Rear = &_Array[_RearIndex];
+
+		//Update Counter
+		_Count = 1;
+
+	}
+	else if (_Count == MAXCOUNT) 
+	{
+		//if queue is reached to the max capicty
 		std::cout << "Queue Overflow \n";
 		return;
 	}
+	else
+	{
+		//if queue has space inside it
 
-	//Store the data inside Array inside position count
-	_Array[_Count] = data;
+		//Update Index
+		_RearIndex++; //Index of the last Item Inserted inside queue
 
-	//Update Pointer of Top,Bottom to Refere to the Top Item , Bottom Item
-	_Front = &_Array[_Count];
-	_Rear = &_Array[0];
+		//Update Pointer
+		_Rear = &_Array[_RearIndex];
+
+		//Update Counter
+		_Count++;
+	}
+
+
+	//Store the data inside Array inside position Rear Index
+	_Array[_RearIndex] = data;
 }
 
-//Pop Item from FixedSimpleQueue
+//Pop Item from the begin of FixedSimpleQueue
 template <typename T, int MAXCOUNT>
 T FixedSimpleQueue<T, MAXCOUNT>::DeQueue()
 {
 	//check if stack reach to lower count or not
-	if (_Count == -1)
+	if (_Count == 0)
 	{
-		std::cout << "Stack underflow \n";
-		return -1;
+		std::cout << "Queue is Empty \n";
+		return 0;
 	}
+	
+	//Store First item inside Queue
+	T frontValue = *_Front;
 
-	T* top = _Front;
-
+	//Clear Front Item by Zero
+	*_Front = 0;
 
 	//Update Counter of Items
 	_Count--;
 
+	//Update Index
+	_FrontIndex++;
+
 	//Update Pointer of Top,Bottom to Refere to the Top Item , Bottom Item
-	_Front = &_Array[_Count];
-	_Rear = &_Array[0];
+	_Front = &_Array[_FrontIndex];
 
-	if (_Count == -1)
-	{
-		_Front = NULL;
-		_Rear = NULL;
-	}
-
-	//Reteurn the Value of Top Item
-	return *top;
+	//Reteurn the Value of Front Item
+	return frontValue;
 }
 
 //Print All Items
@@ -207,13 +223,13 @@ template <typename T, int MAXCOUNT>
 void FixedSimpleQueue<T, MAXCOUNT>::PrintAll()
 {
 
-	if (_Count < 0)
+	if (_Count == 0)
 	{
 		std::cout << "List is Empty";
 	}
 	else
 	{
-		for (size_t i = 0; i <= _Count; i++)
+		for (size_t i = _FrontIndex; i <= _RearIndex; i++)
 		{
 			std::cout << _Array[i] << "\n";
 		}

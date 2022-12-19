@@ -10,19 +10,32 @@ using namespace std;
 
 int main()
 {
+
+
 #pragma region FixedSimpleQueue
 
 	//Simple Queue Implemented by Array so its Fixed Size
 
-	
-	FixedSimpleQueue<int,5> fixedSimpleQueue;
 	/*
+	FixedSimpleQueue<int,5> fixedSimpleQueue;
+	
 	fixedSimpleQueue.EnQueue(100);
 	fixedSimpleQueue.EnQueue(200);
 	fixedSimpleQueue.EnQueue(300);
 	fixedSimpleQueue.EnQueue(400);
+	fixedSimpleQueue.EnQueue(500);
+	
+	cout << "DeQueue = " << fixedSimpleQueue.DeQueue() << "\n";
+	
+	cout << "----------------- \n";
+	fixedSimpleQueue.PrintAll();
+	cout << "----------------- \n";
+
+	cout << "Count = " << fixedSimpleQueue.Count() <<"\n";
+	cout << "Front = " << fixedSimpleQueue.Front() << "\n";
+	cout << "Rear = " << fixedSimpleQueue.Rear() << "\n";
+	
 	*/
-	//cout << "Top Value = " << fixedStackList.Peak() <<"\n";
 	
 
 #pragma endregion
