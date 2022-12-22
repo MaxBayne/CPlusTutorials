@@ -2,6 +2,7 @@
 
 #ifndef DynamicStack_H_
 #define DynamicStack_H_
+
 /*
 * ################### Information #################
 * Define Stack List Powered By LinkedList
@@ -13,10 +14,10 @@
 * we will pop item from the begin of stack
 */
 
-/*
-* ################### Delecrations #################
-*/
+namespace DataStructures
+{
 
+#pragma region Decleration
 
 template <typename T>
 class DynamicStack
@@ -67,12 +68,9 @@ public:
 
 };
 
+#pragma endregion
 
-/*
-* ################### Definitions #################
-*/
-
-
+#pragma region Definations
 
 //Constructor
 template <typename T>
@@ -109,14 +107,30 @@ int DynamicStack<T>::Count()
 template <typename T>
 T DynamicStack<T>::Top()
 {
-	return *_Top->Data;
+	if (_Top != NULL) {
+		return *_Top->Data;
+	}
+	else {
+		return NULL;
+	}
+
+
+	
 }
 
 //Get the Bottom Item inside DynamicStack
 template <typename T>
 T DynamicStack<T>::Bottom()
 {
-	return *_Bottom->Data;
+	if (_Bottom != NULL) {
+		return *_Bottom->Data;
+	}
+	else {
+		return NULL;
+	}
+
+
+	
 }
 
 
@@ -168,7 +182,15 @@ T DynamicStack<T>::Pop()
 template <typename T>
 T DynamicStack<T>::Peak()
 {
-	return _Top->Data;
+	if (_Top != NULL) {
+		return _Top->Data;
+	}
+	else {
+		return NULL;
+	}
+
+
+	
 }
 
 //Print All Items
@@ -187,6 +209,9 @@ void DynamicStack<T>::PrintAll()
 
 }
 
+#pragma endregion
+
+}
 
 #endif // !DynamicStack_H_
 
