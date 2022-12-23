@@ -15,7 +15,7 @@ int main()
 #pragma region DynamicQueue
 
 	//Dynamic Queue Implemented by Linked List
-	/*
+	
 	DynamicQueue<int> dynamicQueue;
 
 	dynamicQueue.Enqueue(100);
@@ -31,9 +31,6 @@ int main()
 
 	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
 	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
-	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
-	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
-	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
 
 	cout << "----------------- \n";
 	dynamicQueue.PrintAll();
@@ -45,7 +42,7 @@ int main()
 	cout << "Front = " << dynamicQueue.Front() << "\n";
 	cout << "Rear = " << dynamicQueue.Rear() << "\n";
 	
-	*/
+	
 
 
 #pragma endregion

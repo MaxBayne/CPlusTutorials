@@ -8,6 +8,10 @@
 * Dynamic Types
 * its more power full than array but array is the fastest way
 * easy insert , remove nodes from list
+* Traversing 
+* Searching
+* Sorting
+* Merging
 */
 
 namespace DataStructures
@@ -127,6 +131,9 @@ namespace DataStructures
 	void LinkedList<T>::InsertNode(T data)
 	{
 		//Create New Node inside Memory and Save its Address inside Pointer newNode
+		//new will be used to make dynamic memory allocation inside Heap Section of memory
+		//but pointer variable will be stored inside Stack Section of Memory and will be use pointer to access the array stored inside heap
+		//programe cant access heap directlly only via pointer stored inside stack section
 		Node<T>* newNodePtr = new Node<T>();
 
 		newNodePtr->Data = data;
@@ -249,6 +256,8 @@ namespace DataStructures
 
 		//Delete Current Node From Memory
 		free(currentNode);
+		//delete currentNode;
+
 	}
 
 	//Delete Node At Begin of LinkedList
