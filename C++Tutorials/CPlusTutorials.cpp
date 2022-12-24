@@ -5,6 +5,7 @@
 #include "FixedSimpleQueue.h"
 #include "FixedCircularQueue.h"
 #include "DynamicQueue.h"
+#include "ArrayList.h"
 
 using namespace std;
 using namespace DataStructures;
@@ -15,7 +16,7 @@ int main()
 #pragma region DynamicQueue
 
 	//Dynamic Queue Implemented by Linked List
-	
+	/*
 	DynamicQueue<int> dynamicQueue;
 
 	dynamicQueue.Enqueue(100);
@@ -43,7 +44,7 @@ int main()
 	cout << "Rear = " << dynamicQueue.Rear() << "\n";
 	
 	
-
+	*/
 
 #pragma endregion
 
@@ -162,6 +163,24 @@ linkedList.PrintAll();
 
 */
 
+
+#pragma endregion
+
+#pragma region ArrayList
+
+/*
+ArrayList<int> myArray(3);
+
+myArray.Insert(10);
+myArray.Insert(20);
+myArray.Insert(30);
+
+
+myArray.Display();
+
+cout << "Array Length = " << myArray.getLength() << endl;
+cout << "Array Size = " << myArray.getSize() << endl;
+*/
 
 #pragma endregion
 

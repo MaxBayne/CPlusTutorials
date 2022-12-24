@@ -131,6 +131,7 @@
     <ClCompile Include="CPlusTutorials.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayList.h" />
     <ClInclude Include="DynamicQueue.h" />
     <ClInclude Include="DynamicStack.h" />
     <ClInclude Include="FixedCircularQueue.h" />
