@@ -13,6 +13,24 @@ using namespace DataStructures;
 
 int main()
 {
+#pragma region ArrayList
+
+	/*
+	ArrayList<int> myArray(3);
+
+	myArray.Insert(10);
+	myArray.Insert(20);
+	myArray.Insert(30);
+
+
+	myArray.Display();
+
+	cout << "Array Length = " << myArray.getLength() << endl;
+	cout << "Array Size = " << myArray.getSize() << endl;
+	*/
+
+#pragma endregion
+
 #pragma region DynamicQueue
 
 	//Dynamic Queue Implemented by Linked List
