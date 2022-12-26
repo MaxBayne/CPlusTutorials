@@ -102,7 +102,7 @@ namespace DataStructures
 	template <typename T>
 	int DynamicQueue<T>::Count()
 	{
-		return _LinkedList.Count();
+		return _LinkedList.getCount();
 	}
 
 
@@ -111,7 +111,7 @@ namespace DataStructures
 	T DynamicQueue<T>::Front()
 	{
 		if (_FrontPtr != NULL) {
-			return _FrontPtr->Data;
+			return _FrontPtr->Value;
 		}
 		else {
 			return NULL;
@@ -125,7 +125,7 @@ namespace DataStructures
 	T DynamicQueue<T>::Rear()
 	{
 		if (_RearPtr != NULL) {
-			return _RearPtr->Data;
+			return _RearPtr->Value;
 		}
 		else {
 			return NULL;
@@ -137,7 +137,7 @@ namespace DataStructures
 	template <typename T>
 	bool DynamicQueue<T>::IsEmpty()
 	{
-		return _LinkedList.Count() == 0;
+		return _LinkedList.getCount() == 0;
 	}
 
 	//Push Item inside Queue
@@ -145,7 +145,7 @@ namespace DataStructures
 	void DynamicQueue<T>::Enqueue(T data)
 	{
 		//Store the data inside LinkedList
-		_LinkedList.InsertNode(data);
+		_LinkedList.Insert(data);
 
 
 		//Update Pointer of Top,Bottom to Refere to the Top Item , Bottom Item
@@ -164,10 +164,10 @@ namespace DataStructures
 			return -1;
 		}
 
-		T topValue = _FrontPtr->Data;
+		T topValue = _FrontPtr->Value;
 
 		//Remove the first Node inside LinkedList
-		_LinkedList.DeleteNodeAtBegin();
+		_LinkedList.DeleteBegin();
 
 		//Update Pointer of Top,Bottom to Refere to the Top Item , Bottom Item
 		_FrontPtr = _LinkedList.FirstNode();
@@ -189,7 +189,7 @@ namespace DataStructures
 	{
 		if (_FrontPtr != NULL) 
 		{
-			return _FrontPtr->Data;
+			return _FrontPtr->Value;
 		}
 		return NULL;
 	}
@@ -205,7 +205,7 @@ namespace DataStructures
 		}
 		else
 		{
-			_LinkedList.PrintAll();
+			_LinkedList.Display();
 		}
 
 	}

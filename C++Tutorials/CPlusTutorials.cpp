@@ -149,19 +149,21 @@ int main()
 
 #pragma region LinkedList
 
-/*
-LinkedList<string> linkedList;
 
-linkedList.InsertNode("Mohammed");
-linkedList.InsertNode("Salah");
-linkedList.InsertNode("Hello");
-linkedList.InsertNode("World");
+LinkedList<string> myLinkedList;
 
-linkedList.InsertNodeAtBegin("My Name is :");
+myLinkedList.Insert("Mohammed");
+myLinkedList.Insert("Salah");
+myLinkedList.Insert("Mohammed");
+myLinkedList.Insert("Ahmed");
+myLinkedList.Insert("Saeid");
 
-linkedList.PrintAll();
 
-*/
+
+myLinkedList.Display();
+
+cout << "Nodes Count = " << myLinkedList.getCount() << endl;
+
 
 
 #pragma endregion

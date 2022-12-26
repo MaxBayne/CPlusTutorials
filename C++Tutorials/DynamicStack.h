@@ -99,7 +99,7 @@ DynamicStack<T>::~DynamicStack()
 template <typename T>
 int DynamicStack<T>::Count()
 {
-	return _LinkedList.Count();
+	return _LinkedList.getCount();
 }
 
 
@@ -108,7 +108,7 @@ template <typename T>
 T DynamicStack<T>::Top()
 {
 	if (_Top != NULL) {
-		return *_Top->Data;
+		return *_Top->Value;
 	}
 	else {
 		return NULL;
@@ -123,7 +123,7 @@ template <typename T>
 T DynamicStack<T>::Bottom()
 {
 	if (_Bottom != NULL) {
-		return *_Bottom->Data;
+		return *_Bottom->Value;
 	}
 	else {
 		return NULL;
@@ -140,7 +140,7 @@ template <typename T>
 void DynamicStack<T>::Push(T data)
 {
 	//Store the data inside begin of LinkedList
-	_LinkedList.InsertNodeAtBegin(data);
+	_LinkedList.InsertBegin(data);
 
 
 	//Update Pointer of Top,Bottom to Refere to the Top Item , Bottom Item
@@ -153,22 +153,22 @@ template <typename T>
 T DynamicStack<T>::Pop()
 {
 	//check if stack reach to lower count or not
-	if (_LinkedList.Count() == 0)
+	if (_LinkedList.getCount() == 0)
 	{
 		std::cout << "Stack underflow \n";
 		return -1;
 	}
 
-	T topValue = _Top->Data;
+	T topValue = _Top->Value;
 
 	//Remove the first Node inside LinkedList
-	_LinkedList.DeleteNodeAtBegin();
+	_LinkedList.DeleteBegin();
 
 	//Update Pointer of Top,Bottom to Refere to the Top Item , Bottom Item
 	_Top = _LinkedList.FirstNode();
 	
 
-	if (_LinkedList.Count() == 0)
+	if (_LinkedList.getCount() == 0)
 	{
 		_Top = NULL;
 		_Bottom = NULL;
@@ -183,7 +183,7 @@ template <typename T>
 T DynamicStack<T>::Peak()
 {
 	if (_Top != NULL) {
-		return _Top->Data;
+		return _Top->Value;
 	}
 	else {
 		return NULL;
@@ -198,13 +198,13 @@ template <typename T>
 void DynamicStack<T>::PrintAll()
 {
 
-	if (_LinkedList.Count() == 0)
+	if (_LinkedList.getCount() == 0)
 	{
 		std::cout << "List is Empty";
 	}
 	else
 	{ 
-		_LinkedList.PrintAll();
+		_LinkedList.Display();
 	}
 
 }

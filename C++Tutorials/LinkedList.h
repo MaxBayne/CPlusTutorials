@@ -20,12 +20,14 @@ namespace DataStructures
 #pragma region Declearation
 
 	template <typename T>
-	struct Node
+	class Node
 	{
-		T Data;
+	public:
 
-		Node<T>* PreviousNode;
-		Node<T>* NextNode;
+		T Value;
+
+		Node<T>* PreviousNodePtr;
+		Node<T>* NextNodePtr;
 	};
 
 
@@ -54,23 +56,24 @@ namespace DataStructures
 
 
 		//Insert New Node inside LinkedList
-		void InsertNode(T data);
+		void Insert(T data);
 
 		//Insert New Node at Begin of LinkedList
-		void InsertNodeAtBegin(T data);
+		void InsertBegin(T data);
 
 		//Delete Node inside LinkedList
-		void DeleteNode(T data);
+		void Delete(T data);
 
 		//Delete Node At Begin of LinkedList
-		void DeleteNodeAtBegin();
+		void DeleteBegin();
 
 		//Print All Nodes
-		void PrintAll();
+		void Display();
+
 
 
 		//Get the Count of Nodes inside LinkedList
-		int Count();
+		int getCount();
 
 		//Get the First Node inside LinkedList
 		Node<T>* FirstNode();
@@ -78,12 +81,19 @@ namespace DataStructures
 		//Get the Last Node inside LinkedList
 		Node<T>* LastNode();
 
+		//Check if LinkedList is Empty
+		bool isEmpty();
+		
+		//check if data exist inside any node
+		bool isExist(T data);
+
 	};
 
 #pragma endregion
 
 #pragma region Defination
 
+	//[Tested]
 	//Constructor
 	template <typename T>
 	LinkedList<T>::LinkedList()
@@ -102,15 +112,15 @@ namespace DataStructures
 	}
 
 
-
+	//[Tested]
 	//Get the Count of Nodes inside LinkedList
 	template <typename T>
-	int LinkedList<T>::Count()
+	int LinkedList<T>::getCount()
 	{
 		return _Count;
 	}
 
-
+	//[Tested]
 	//Get the First Node inside LinkedList
 	template <typename T>
 	Node<T>* LinkedList<T>::FirstNode()
@@ -118,6 +128,7 @@ namespace DataStructures
 		return _FirstNode;
 	}
 
+	//[Tested]
 	//Get the Last Node inside LinkedList
 	template <typename T>
 	Node<T>* LinkedList<T>::LastNode()
@@ -125,20 +136,23 @@ namespace DataStructures
 		return _LastNode;
 	}
 
-
+	//[Tested]
 	//Insert New Node inside LinkedList
 	template <typename T>
-	void LinkedList<T>::InsertNode(T data)
+	void LinkedList<T>::Insert(T data)
 	{
+		//Increase the Counter of Nodes
+		_Count++;
+
 		//Create New Node inside Memory and Save its Address inside Pointer newNode
 		//new will be used to make dynamic memory allocation inside Heap Section of memory
 		//but pointer variable will be stored inside Stack Section of Memory and will be use pointer to access the array stored inside heap
 		//programe cant access heap directlly only via pointer stored inside stack section
 		Node<T>* newNodePtr = new Node<T>();
 
-		newNodePtr->Data = data;
-		newNodePtr->NextNode = nullptr;
-		newNodePtr->PreviousNode = _LastNode;
+		newNodePtr->Value = data;
+		newNodePtr->NextNodePtr = nullptr;
+		newNodePtr->PreviousNodePtr = _LastNode;
 
 
 		//Link New Node to the Last Node inside Linked List
@@ -154,31 +168,29 @@ namespace DataStructures
 			//if new node not the first node inside LinkedList
 
 			//Update the NextNode inside the last Node
-			_LastNode->NextNode = newNodePtr;
+			_LastNode->NextNodePtr = newNodePtr;
 
 			//Make Last Node Refere to the new last Node
 			_LastNode = newNodePtr;
 		}
-
-		//Increase the Counter of Nodes
-		_Count++;
+		
 	}
 
 	//Insert New Node at Begin of LinkedList
 	template <typename T>
-	void LinkedList<T>::InsertNodeAtBegin(T data)
+	void LinkedList<T>::InsertBegin(T data)
 	{
 		//Create New Node inside Memory and Save its Address inside Pointer newNode
 		Node<T>* newNodePtr = new Node<T>();
 
-		newNodePtr->Data = data;
-		newNodePtr->NextNode = _FirstNode;
-		newNodePtr->PreviousNode = nullptr;
+		newNodePtr->Value = data;
+		newNodePtr->NextNodePtr = _FirstNode;
+		newNodePtr->PreviousNodePtr = nullptr;
 
 
 		//Link New Node to the First Node inside Linked List
 
-		if (_FirstNode == nullptr)
+		if (isEmpty())
 		{
 			//if the node is the first node inside LinkedList
 			_FirstNode = newNodePtr;
@@ -189,7 +201,7 @@ namespace DataStructures
 			//if new node not the first node inside LinkedList
 
 			//Update the Previous inside the Old First Node
-			_FirstNode->PreviousNode = newNodePtr;
+			_FirstNode->PreviousNodePtr = newNodePtr;
 
 			//Make First Node Refere to the new last Node
 			_FirstNode = newNodePtr;
@@ -201,19 +213,19 @@ namespace DataStructures
 
 	//Delete Node inside LinkedList
 	template <typename T>
-	void LinkedList<T>::DeleteNode(T data)
+	void LinkedList<T>::Delete(T data)
 	{
 		//Search For data inside All Nodes
 		Node<T>* currentNode = _FirstNode;
 		Node<T>* previousNode = NULL;
-		Node<T>* nextNode = _FirstNode->NextNode;
+		Node<T>* nextNode = _FirstNode->NextNodePtr;
 
 		//Loop All Nodes Until Found the Node
-		while (currentNode->Data != data)
+		while (currentNode->Value != data)
 		{
-			currentNode = currentNode->NextNode;
-			previousNode = currentNode->PreviousNode;
-			nextNode = currentNode->NextNode;
+			currentNode = currentNode->NextNodePtr;
+			previousNode = currentNode->PreviousNodePtr;
+			nextNode = currentNode->NextNodePtr;
 
 			//When Reached to Last Node
 			if (currentNode == NULL)
@@ -231,25 +243,25 @@ namespace DataStructures
 
 
 
-		if (currentNode->Data == _FirstNode->Data)
+		if (currentNode->Value == _FirstNode->Value)
 		{
 			//If Found Node is First Node
 			if (nextNode != NULL) {
 				_FirstNode = nextNode;
-				nextNode->PreviousNode = NULL;
+				nextNode->PreviousNodePtr = NULL;
 			}
 			
 		}
-		else if (currentNode->Data == _LastNode->Data)
+		else if (currentNode->Value == _LastNode->Value)
 		{
 			//If Found Node is Last Node
 			_LastNode = previousNode;
-			previousNode->NextNode = NULL;
+			previousNode->NextNodePtr = NULL;
 		}
 		else
 		{
-			previousNode->NextNode = nextNode;
-			nextNode->PreviousNode = previousNode;
+			previousNode->NextNodePtr = nextNode;
+			nextNode->PreviousNodePtr = previousNode;
 		}
 
 		_Count--;
@@ -262,16 +274,17 @@ namespace DataStructures
 
 	//Delete Node At Begin of LinkedList
 	template <typename T>
-	void LinkedList<T>::DeleteNodeAtBegin()
+	void LinkedList<T>::DeleteBegin()
 	{
-		DeleteNode(_FirstNode->Data);
+		Delete(_FirstNode->Value);
 	}
 
+	//[Tested]
 	//Print All Nodes
 	template <typename T>
-	void LinkedList<T>::PrintAll()
+	void LinkedList<T>::Display()
 	{
-		if (_Count == 0)
+		if (isEmpty())
 		{
 			std::cout << "List is Empty";
 		}
@@ -279,14 +292,47 @@ namespace DataStructures
 		{
 			Node<T>* currentNode = _FirstNode;
 
+			std::cout << "LinkedList Nodes" << std::endl;
+			std::cout << "================" << std::endl;
+
 			while (currentNode != NULL)
 			{
-				std::cout << currentNode->Data << "\n";
+				std::cout << currentNode->Value << "\n";
 
-				currentNode = currentNode->NextNode;
+				currentNode = currentNode->NextNodePtr;
 			}
+
+			std::cout << "\n";
 		}
 
+	}
+
+	//[Tested]
+	//Check if LinkedList is Empty
+	template <typename T>
+	bool LinkedList<T>::isEmpty()
+	{
+		return _Count == 0;
+	}
+
+	
+	//check if data exist inside any node
+	template <typename T>
+	bool LinkedList<T>::isExist(T data)
+	{
+		bool exist = false;
+
+		Node<T>* currentNode = _FirstNode;
+
+		while (currentNode != NULL)
+		{
+			if (currentNode->Value == data)
+				return true;
+
+			currentNode = currentNode->NextNodePtr;
+		}
+
+		return exist;
 	}
 
 #pragma endregion
