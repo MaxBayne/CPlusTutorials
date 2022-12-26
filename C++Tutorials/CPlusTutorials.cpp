@@ -111,7 +111,7 @@ int main()
 
 	//Stack List Implemented by LinkedList so its Dynamic Size
 
-	/*
+	
 	DynamicStack<int> stackList;
 
 	stackList.Push(100);
@@ -119,14 +119,15 @@ int main()
 	stackList.Push(300);
 	stackList.Push(400);
 
-	//cout << "Top Value = " << stackList.Peak() <<"\n";
-	stackList.PrintAll();
+	stackList.Display();
 	
-	cout << "\nPop = " << stackList.Pop() << "\n\n";
+	cout << "Peak Value = " << stackList.Peak() << "\n";
+	cout << "Top Value = " << stackList.Top() << "\n";
+	cout << "Bottom Value = " << stackList.Bottom() << "\n";
+	cout << "Count Value = " << stackList.Count() << "\n";
+	cout << "IsExist(200) = " << stackList.IsExist(200) << "\n";
 	
-
-	stackList.PrintAll();
-	*/
+	stackList.DisplayReverse();
 
 #pragma endregion
 

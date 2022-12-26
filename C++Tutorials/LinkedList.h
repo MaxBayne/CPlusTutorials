@@ -70,6 +70,9 @@ namespace DataStructures
 		//Print All Nodes
 		void Display();
 
+		//Print All Nodes Reversed From Bottom To Top
+		void DisplayReverse();
+
 
 
 		//Get the Count of Nodes inside LinkedList
@@ -300,6 +303,34 @@ namespace DataStructures
 				std::cout << currentNode->Value << "\n";
 
 				currentNode = currentNode->NextNodePtr;
+			}
+
+			std::cout << "\n";
+		}
+
+	}
+
+	//[Tested]
+	//Print All Nodes Reversed From Bottom To Top
+	template <typename T>
+	void LinkedList<T>::DisplayReverse()
+	{
+		if (isEmpty())
+		{
+			std::cout << "List is Empty";
+		}
+		else
+		{
+			Node<T>* currentNode = _LastNode;
+
+			std::cout << "LinkedList Nodes" << std::endl;
+			std::cout << "================" << std::endl;
+
+			while (currentNode != NULL)
+			{
+				std::cout << currentNode->Value << "\n";
+
+				currentNode = currentNode->PreviousNodePtr;
 			}
 
 			std::cout << "\n";

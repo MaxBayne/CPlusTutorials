@@ -52,10 +52,11 @@ public:
 	//Peak Top Item from StackList
 	T Peak();
 
-	//Print All Items
-	void PrintAll();
+	//Print All Items in order of pop
+	void Display();
 
-
+	//Print All Items in order of push
+	void DisplayReverse();
 
 
 	//Get the Top Item inside StackList
@@ -66,6 +67,12 @@ public:
 
 	//Get the Count of Items inside StackList
 	int Count();
+
+	//check if stack is Empty
+	bool IsEmpty();
+
+	//check if stack has item value or not
+	bool IsExist(T data);
 
 };
 
@@ -109,14 +116,11 @@ template <typename T>
 T DynamicStack<T>::Top()
 {
 	if (_Top != NULL) {
-		return *_Top->Value;
+		return _Top->Value;
 	}
 	else {
 		return NULL;
 	}
-
-
-	
 }
 
 //Get the Bottom Item inside DynamicStack
@@ -124,7 +128,7 @@ template <typename T>
 T DynamicStack<T>::Bottom()
 {
 	if (_Bottom != NULL) {
-		return *_Bottom->Value;
+		return _Bottom->Value;
 	}
 	else {
 		return NULL;
@@ -154,7 +158,7 @@ template <typename T>
 T DynamicStack<T>::Pop()
 {
 	//check if stack reach to lower count or not
-	if (_LinkedList.getCount() == 0)
+	if (IsEmpty())
 	{
 		std::cout << "Stack underflow \n";
 		return -1;
@@ -169,7 +173,7 @@ T DynamicStack<T>::Pop()
 	_Top = _LinkedList.FirstNode();
 	
 
-	if (_LinkedList.getCount() == 0)
+	if (IsEmpty())
 	{
 		_Top = NULL;
 		_Bottom = NULL;
@@ -196,10 +200,10 @@ T DynamicStack<T>::Peak()
 
 //Print All Items
 template <typename T>
-void DynamicStack<T>::PrintAll()
+void DynamicStack<T>::Display()
 {
 
-	if (_LinkedList.getCount() == 0)
+	if (IsEmpty())
 	{
 		std::cout << "List is Empty";
 	}
@@ -209,6 +213,37 @@ void DynamicStack<T>::PrintAll()
 	}
 
 }
+
+
+//Print All Items in order of push
+template <typename T>
+void DynamicStack<T>::DisplayReverse()
+{
+	if (IsEmpty())
+	{
+		std::cout << "List is Empty";
+	}
+	else
+	{
+		_LinkedList.DisplayReverse();
+	}
+}
+
+//check if stack is Empty
+template <typename T>
+bool DynamicStack<T>::IsEmpty()
+{
+	return _LinkedList.isEmpty();
+}
+
+
+//check if stack has item value or not
+template <typename T>
+bool DynamicStack<T>::IsExist(T data)
+{
+	return _LinkedList.isExist(data);
+}
+
 
 #pragma endregion
 
