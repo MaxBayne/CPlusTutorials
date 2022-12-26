@@ -6,6 +6,7 @@
 /*
 * ################### Information #################
 * Define Stack List Powered By LinkedList
+* Implement Rule Last in First Out (LIFO)
 * Dynamic List Items
 * push item to stack
 * pop item from stack

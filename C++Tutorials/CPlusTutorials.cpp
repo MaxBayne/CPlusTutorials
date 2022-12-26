@@ -142,14 +142,20 @@ int main()
 	fixedStackList.Push(300);
 	fixedStackList.Push(400);
 	
-	cout << "Top Value = " << fixedStackList.Peak() <<"\n";
-	*/
+	fixedStackList.Display();
 
+	cout << "Peak Value = " << fixedStackList.Peak() << "\n";
+	cout << "Top Value = " << fixedStackList.Top() <<"\n";
+	cout << "Bottom Value = " << fixedStackList.Bottom() << "\n";
+	cout << "Count Value = " << fixedStackList.Count() << "\n";
+	cout << "Max Value = " << fixedStackList.MaxCount() << "\n";
+	cout << "IsExist(200) = " << fixedStackList.IsExist(200) << "\n";
+	*/
 #pragma endregion
 
 #pragma region LinkedList
 
-
+/*
 LinkedList<string> myLinkedList;
 
 myLinkedList.Insert("Mohammed");
@@ -165,7 +171,7 @@ myLinkedList.Display();
 cout << "Nodes Count = " << myLinkedList.getCount() << endl;
 
 
-
+*/
 #pragma endregion
 
 #pragma region ArrayList
