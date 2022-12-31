@@ -33,15 +33,20 @@ namespace DataStructures
 		//Pointer For the Rear (Last) Item inside Queue
 		Node<T>* _RearPtr;
 
+		//max items can be stored inside queue
+		int _MaxCount;
+
+		//if current queue is limited or not
+		bool _LimitedQueue;
+
 	public:
 
 		//Constructor
 		DynamicQueue();
+		DynamicQueue(int maxCount);
 
 		//Destrcutor
 		~DynamicQueue();
-
-
 
 		//Push Item inside End of Queue
 		void Enqueue(T data);
@@ -53,9 +58,13 @@ namespace DataStructures
 		T Peak();
 
 		//Print All Items Order by the Dequeue sorting
-		void PrintAll();
+		void Display();
 
+		//Print All Items Order by the Enqueue sorting
+		void DisplayReverse();
 
+		//Clear All Items inside Queue
+		void Clear();
 
 		//Get the Top Item inside Queue
 		T Front();
@@ -69,6 +78,12 @@ namespace DataStructures
 		//Check if Queue is Empty
 		bool IsEmpty();
 
+		//Check if Queue is Full only with limited queue
+		bool IsFull();
+
+		//check if data exist or not inside queue
+		bool IsExist(T data);
+
 	};
 
 #pragma endregion
@@ -81,7 +96,21 @@ namespace DataStructures
 	{
 		_FrontPtr = nullptr;
 		_RearPtr = nullptr;
+
+		_MaxCount = -1; //unlimited queue
+		_LimitedQueue = false;
 	}
+
+	template <typename T>
+	DynamicQueue<T>::DynamicQueue(int maxCount)
+	{
+		_FrontPtr = nullptr;
+		_RearPtr = nullptr;
+
+		_MaxCount = maxCount; //limited queue
+		_LimitedQueue = true;
+	}
+
 
 	//Desctructor
 	template <typename T>
@@ -137,13 +166,35 @@ namespace DataStructures
 	template <typename T>
 	bool DynamicQueue<T>::IsEmpty()
 	{
-		return _LinkedList.getCount() == 0;
+		return _LinkedList.isEmpty();
+	}
+
+	//Check if Queue is Full only with limited queue
+	template <typename T>
+	bool DynamicQueue<T>::IsFull()
+	{
+		return _LinkedList.getCount() == _MaxCount;
+	}
+
+
+	//check if data exist or not inside queue
+	template <typename T>
+	bool DynamicQueue<T>::IsExist(T data) 
+	{
+		return _LinkedList.isExist(data);
 	}
 
 	//Push Item inside Queue
 	template <typename T>
 	void DynamicQueue<T>::Enqueue(T data)
 	{
+		//check if queue is limited or not
+		if (_LimitedQueue && IsFull())
+		{
+			std::cout << "Queue is Limited Overflow";
+			return;
+		}
+
 		//Store the data inside LinkedList
 		_LinkedList.Insert(data);
 
@@ -196,7 +247,7 @@ namespace DataStructures
 
 	//Print All Items
 	template <typename T>
-	void DynamicQueue<T>::PrintAll()
+	void DynamicQueue<T>::Display()
 	{
 
 		if (IsEmpty())
@@ -208,6 +259,29 @@ namespace DataStructures
 			_LinkedList.Display();
 		}
 
+	}
+
+	//Print All Items
+	template <typename T>
+	void DynamicQueue<T>::DisplayReverse()
+	{
+
+		if (IsEmpty())
+		{
+			std::cout << "Queue is Empty";
+		}
+		else
+		{
+			_LinkedList.DisplayReverse();
+		}
+
+	}
+
+	//Clear All Items inside Queue
+	template <typename T>
+	void DynamicQueue<T>::Clear()
+	{
+		_LinkedList.Clear();
 	}
 
 #pragma endregion

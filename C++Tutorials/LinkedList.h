@@ -73,6 +73,8 @@ namespace DataStructures
 		//Print All Nodes Reversed From Bottom To Top
 		void DisplayReverse();
 
+		//Clear All Items Inside LinkedList
+		void Clear();
 
 
 		//Get the Count of Nodes inside LinkedList
@@ -364,6 +366,28 @@ namespace DataStructures
 		}
 
 		return exist;
+	}
+
+	//Clear All Items Inside LinkedList
+	template <typename T>
+	void LinkedList<T>::Clear()
+	{
+		Node<T>* currentNode = _LastNode;
+		Node<T>* previousNode;
+
+		//Loop All Nodes Until Finish
+		while (currentNode != NULL)
+		{
+			previousNode = currentNode->PreviousNodePtr;
+
+			free(currentNode);
+
+			currentNode = previousNode;
+		}
+
+		_FirstNode = NULL;
+		_LastNode = NULL;
+		_Count = 0;
 	}
 
 #pragma endregion

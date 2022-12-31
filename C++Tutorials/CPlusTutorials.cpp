@@ -6,6 +6,7 @@
 #include "FixedCircularQueue.h"
 #include "DynamicQueue.h"
 #include "ArrayList.h"
+#include "BinarySearchTree.h"
 
 using namespace std;
 using namespace DataStructures;
@@ -13,6 +14,27 @@ using namespace DataStructures;
 
 int main()
 {
+
+#pragma region Binary Search Tree
+
+	//45, 15, 79, 90, 10, 55, 12, 20, 50
+	/*
+	BinarySearchTree<int> btree;
+
+	btree.Insert(45);
+	btree.Insert(15);
+	btree.Insert(79);
+	btree.Insert(90);
+	btree.Insert(10);
+	btree.Insert(55);
+	btree.Insert(12);
+	btree.Insert(20);
+	btree.Insert(50);
+
+	btree.Display(btree.RootNode(), SortTypeEnum::PreOrder);
+	*/
+#pragma endregion
+
 #pragma region DynamicQueue
 
 	//Dynamic Queue Implemented by Linked List
@@ -27,14 +49,16 @@ int main()
 
 
 	cout << "----------------- \n";
-	dynamicQueue.PrintAll();
+	dynamicQueue.Display();
 	cout << "----------------- \n";
 
 	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
 	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
 
+	
+
 	cout << "----------------- \n";
-	dynamicQueue.PrintAll();
+	dynamicQueue.Display();
 	cout << "----------------- \n";
 
 
@@ -110,8 +134,8 @@ int main()
 #pragma region DynamicStack
 
 	//Stack List Implemented by LinkedList so its Dynamic Size
-
 	
+	/*
 	DynamicStack<int> stackList;
 
 	stackList.Push(100);
@@ -128,7 +152,7 @@ int main()
 	cout << "IsExist(200) = " << stackList.IsExist(200) << "\n";
 	
 	stackList.DisplayReverse();
-
+	*/
 #pragma endregion
 
 #pragma region FixedStack
