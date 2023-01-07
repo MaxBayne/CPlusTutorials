@@ -12,8 +12,21 @@ using namespace std;
 using namespace DataStructures;
 
 
-int main()
+int DataStructure_main()
 {
+	DynamicQueue<const char*> dynamicQueue;
+
+	dynamicQueue.Enqueue("hello");
+	dynamicQueue.Enqueue("world");
+	dynamicQueue.Enqueue("iam");
+	dynamicQueue.Enqueue("max bayne");
+
+
+
+	cout << "----------------- \n";
+	dynamicQueue.Display();
+	cout << "----------------- \n";
+
 
 #pragma region Binary Search Tree
 
@@ -55,7 +68,7 @@ int main()
 	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
 	cout << "DeQueue = " << dynamicQueue.Dequeue() << "\n";
 
-	
+
 
 	cout << "----------------- \n";
 	dynamicQueue.Display();
@@ -66,8 +79,8 @@ int main()
 	cout << "Peak = " << dynamicQueue.Peak() << "\n";
 	cout << "Front = " << dynamicQueue.Front() << "\n";
 	cout << "Rear = " << dynamicQueue.Rear() << "\n";
-	
-	
+
+
 	*/
 
 #pragma endregion
@@ -77,7 +90,7 @@ int main()
 	//Circular Queue Implemented by Array so its Fixed Size
 
 	/*
-	
+
 	FixedCircularQueue<int,5> fixedCircularQueue;
 
 	fixedCircularQueue.EnQueue(100);
@@ -85,7 +98,7 @@ int main()
 	fixedCircularQueue.EnQueue(300);
 	fixedCircularQueue.EnQueue(400);
 	fixedCircularQueue.EnQueue(500);
-	
+
 
 	cout << "DeQueue = " << fixedCircularQueue.DeQueue() << "\n";
 	fixedCircularQueue.EnQueue(600);
@@ -114,9 +127,9 @@ int main()
 	fixedSimpleQueue.EnQueue(300);
 	fixedSimpleQueue.EnQueue(400);
 	fixedSimpleQueue.EnQueue(500);
-	
+
 	cout << "DeQueue = " << fixedSimpleQueue.DeQueue() << "\n";
-	
+
 	cout << "----------------- \n";
 	fixedSimpleQueue.PrintAll();
 	cout << "----------------- \n";
@@ -126,15 +139,15 @@ int main()
 	cout << "Rear = " << fixedSimpleQueue.Rear() << "\n";
 	cout << "Peak = " << fixedSimpleQueue.Peak() << "\n";
 	*/
-	
-	
+
+
 
 #pragma endregion
 
 #pragma region DynamicStack
 
 	//Stack List Implemented by LinkedList so its Dynamic Size
-	
+
 	/*
 	DynamicStack<int> stackList;
 
@@ -144,13 +157,13 @@ int main()
 	stackList.Push(400);
 
 	stackList.Display();
-	
+
 	cout << "Peak Value = " << stackList.Peak() << "\n";
 	cout << "Top Value = " << stackList.Top() << "\n";
 	cout << "Bottom Value = " << stackList.Bottom() << "\n";
 	cout << "Count Value = " << stackList.Count() << "\n";
 	cout << "IsExist(200) = " << stackList.IsExist(200) << "\n";
-	
+
 	stackList.DisplayReverse();
 	*/
 #pragma endregion
@@ -166,7 +179,7 @@ int main()
 	fixedStackList.Push(200);
 	fixedStackList.Push(300);
 	fixedStackList.Push(400);
-	
+
 	fixedStackList.Display();
 
 	cout << "Peak Value = " << fixedStackList.Peak() << "\n";
@@ -180,40 +193,40 @@ int main()
 
 #pragma region LinkedList
 
-/*
-LinkedList<string> myLinkedList;
+	/*
+	LinkedList<string> myLinkedList;
 
-myLinkedList.Insert("Mohammed");
-myLinkedList.Insert("Salah");
-myLinkedList.Insert("Mohammed");
-myLinkedList.Insert("Ahmed");
-myLinkedList.Insert("Saeid");
-
-
-
-myLinkedList.Display();
-
-cout << "Nodes Count = " << myLinkedList.getCount() << endl;
+	myLinkedList.Insert("Mohammed");
+	myLinkedList.Insert("Salah");
+	myLinkedList.Insert("Mohammed");
+	myLinkedList.Insert("Ahmed");
+	myLinkedList.Insert("Saeid");
 
 
-*/
+
+	myLinkedList.Display();
+
+	cout << "Nodes Count = " << myLinkedList.getCount() << endl;
+
+
+	*/
 #pragma endregion
 
 #pragma region ArrayList
 
-/*
-ArrayList<int> myArray(3);
+	/*
+	ArrayList<int> myArray(3);
 
-myArray.Insert(10);
-myArray.Insert(20);
-myArray.Insert(30);
+	myArray.Insert(10);
+	myArray.Insert(20);
+	myArray.Insert(30);
 
 
-myArray.Display();
+	myArray.Display();
 
-cout << "Array Length = " << myArray.getLength() << endl;
-cout << "Array Size = " << myArray.getSize() << endl;
-*/
+	cout << "Array Length = " << myArray.getLength() << endl;
+	cout << "Array Size = " << myArray.getSize() << endl;
+	*/
 
 #pragma endregion
 
